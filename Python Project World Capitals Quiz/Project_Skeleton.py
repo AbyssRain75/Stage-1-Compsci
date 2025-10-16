@@ -11,19 +11,19 @@ def main():
 
 #To complete
 def print_banner(username):
-    upper = username.upper()
-    msg = f"World Capitals Quiz For {upper}"
-    inner = f"#  {msg}  #"
-    border = "#" * len(inner)
+    upper_username = username.upper()
+    message= f"World Capitals Quiz For {upper_username}"
+    inner_line = f"#  {message}  #"
+    border = "#" * len(inner_line)
     print(border)
-    print(inner)
+    print(inner_line)
     print(border)
     print()
 
 #To complete
 def get_world_capitals_dictionary(filename):
     result = {}
-    with open(filename, "r", encoding="latin-1") as f:
+    with open(filename, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if not line or ":" not in line:
@@ -38,9 +38,7 @@ def get_player_answer(target_country, cities):
     while choice not in cities:
         print(f"Choices available: {cities}")
         print()
-        choice = input(
-            f"What is the capital city of {target_country}? "
-        ).strip()
+        choice = input(f"What is the capital city of {target_country}? ").strip()
         if choice not in cities:
             print("You must choose from the city choices available!")
     cities.remove(choice)
@@ -57,7 +55,7 @@ def run_round(world_capitals_dict, countries_tested):
         answer = get_player_answer(target_country, cities)
         if answer == correct:
             print("Your answer is correct! Well done!")
-            score = 4 - attempts  # 1st→3, 2nd→2, 3rd→1
+            score = 4 - attempts  # 1st+3, 2nd+2, 3rd+1
             break
         elif attempts < 3:
             print("Your answer is incorrect! Please try again!")
@@ -142,3 +140,4 @@ def get_question_data(world_capitals_dict, countries_tested):
 
 #Do not update or remove   
 main()
+
